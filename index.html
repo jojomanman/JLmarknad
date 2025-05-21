@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JL Marknad - Det lilla bolaget med de stora möjligheterna</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #555555; /* Neutral Mid-Gray */
+        }
+        .text-neutral-dark { color: #1A1A1A; }
+        .text-neutral-mid-gray { color: #555555; }
+        .text-neutral-light-gray { color: #F4F6F8; }
+        .bg-neutral-dark { background-color: #1A1A1A; }
+        .bg-neutral-light-gray { background-color: #F4F6F8; }
+        .bg-primary-blue { background-color: #004A99; }
+        .text-primary-blue { color: #004A99; }
+        .border-primary-blue { border-color: #004A99; }
+        .bg-accent-yellow { background-color: #FFB800; }
+        .text-accent-yellow { color: #FFB800; }
+
+        /* Responsive container */
+        .container-custom {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem; /* 16px */
+            padding-right: 1rem; /* 16px */
+        }
+        @media (min-width: 640px) { /* sm */
+            .container-custom {
+                max-width: 640px;
+                padding-left: 2rem; /* 32px */
+                padding-right: 2rem; /* 32px */
+            }
+        }
+        @media (min-width: 768px) { /* md */
+            .container-custom {
+                max-width: 768px;
+            }
+        }
+        @media (min-width: 1024px) { /* lg */
+            .container-custom {
+                max-width: 1024px;
+                 /* Figma: Margin 80px or 100px. (1440 - (2*80) = 1280. (1440 - (2*100)) = 1240) */
+                 /* Using a common max-width for content area */
+            }
+        }
+        @media (min-width: 1280px) { /* xl */
+            .container-custom {
+                max-width: 1280px; /* Content width based on 1440px frame with 80px margins */
+            }
+        }
+        /* Custom dropdown for services - basic styling, can be enhanced with JS */
+        .services-dropdown .dropdown-menu {
+            display: none;
+        }
+        .services-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#004A99',
+                        'primary-red': '#D81E05',
+                        'accent-yellow': '#FFB800',
+                        'neutral-dark': '#1A1A1A',
+                        'neutral-mid-gray': '#555555',
+                        'neutral-light-gray': '#F4F6F8',
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-white">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-[80px]">
+                <div class="flex-shrink-0">
+                    <!-- Placeholder for JL Marknad Logo -->
+                    <a href="index.html" class="text-2xl font-bold text-primary-blue">JL Marknad</a>
+                    <!-- <img src="path/to/logo.svg" alt="JL Marknad Logo" class="h-10"> -->
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-neutral-dark hover:text-primary-blue px-3 py-2 rounded-md text-[15px] font-medium">Hem</a>
+                        <a href="about.html" class="text-neutral-dark hover:text-primary-blue px-3 py-2 rounded-md text-[15px] font-medium">Om Oss</a>
+                        <div class="relative services-dropdown">
+                            <button class="text-neutral-dark hover:text-primary-blue px-3 py-2 rounded-md text-[15px] font-medium flex items-center">
+                                Tjänster
+                                <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            </button>
+                            <div class="dropdown-menu absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-1 z-20">
+                                <a href="service-business-consulting.html" class="block px-4 py-2 text-sm text-neutral-dark hover:bg-neutral-light-gray hover:text-primary-blue">Affärsutveckling & Konsultation</a>
+                                <a href="service-property-rentals.html" class="block px-4 py-2 text-sm text-neutral-dark hover:bg-neutral-light-gray hover:text-primary-blue">Fastigheter & Uthyrning</a>
+                                <a href="service-transport-solutions.html" class="block px-4 py-2 text-sm text-neutral-dark hover:bg-neutral-light-gray hover:text-primary-blue">Transportlösningar</a>
+                                <a href="service-equipment-rentals.html" class="block px-4 py-2 text-sm text-neutral-dark hover:bg-neutral-light-gray hover:text-primary-blue">Utrustningsuthyrning</a>
+                            </div>
+                        </div>
+                        <a href="ventures.html" class="text-neutral-dark hover:text-primary-blue px-3 py-2 rounded-md text-[15px] font-medium">Våra Verksamheter</a>
+                        <a href="contact.html" class="text-neutral-dark hover:text-primary-blue px-3 py-2 rounded-md text-[15px] font-medium">Kontakt</a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <a href="contact.html" class="ml-4 inline-flex items-center px-4 py-2 border border-primary-blue text-sm font-semibold rounded-lg text-primary-blue bg-white hover:bg-primary-blue hover:text-white transition duration-150">
+                        Kontakta Oss
+                    </a>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-white inline-flex items-center justify-center p-2 rounded-md text-neutral-mid-gray hover:text-primary-blue hover:bg-neutral-light-gray focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-blue" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Öppna huvudmeny</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-neutral-dark hover:bg-neutral-light-gray hover:text-primary-blue block px-3 py-2 rounded-md text-base font-medium">Hem</a>
+                <a href="about.html" class="text-neutral-dark hover:bg-neutral-light-gray hover:text-primary-blue block px-3 py-2 rounded-md text-base font-medium">Om Oss</a>
+                <div>
+                    <button id="mobile-services-button" class="w-full text-left text-neutral-dark hover:bg-neutral-light-gray hover:text-primary-blue block px-3 py-2 rounded-md text-base font-medium flex justify-between items-center">
+                        Tjänster
+                        <svg class="ml-1 h-5 w-5 transform transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+                    <div id="mobile-services-dropdown" class="hidden pl-4 mt-1 space-y-1">
+                        <a href="service-business-consulting.html" class="block px-3 py-2 rounded-md text-base font-medium text-neutral-dark hover:bg-neutral-light-gray hover:text-primary-blue">Affärsutveckling & Konsultation</a>
+                        <a href="service-property-rentals.html" class="block px-3 py-2 rounded-md text-base font-medium text-neutral-dark hover:bg-neutral-light-gray hover:text-primary-blue">Fastigheter & Uthyrning</a>
+                        <a href="service-transport-solutions.html" class="block px-3 py-2 rounded-md text-base font-medium text-neutral-dark hover:bg-neutral-light-gray hover:text-primary-blue">Transportlösningar</a>
+                        <a href="service-equipment-rentals.html" class="block px-3 py-2 rounded-md text-base font-medium text-neutral-dark hover:bg-neutral-light-gray hover:text-primary-blue">Utrustningsuthyrning</a>
+                    </div>
+                </div>
+                <a href="ventures.html" class="text-neutral-dark hover:bg-neutral-light-gray hover:text-primary-blue block px-3 py-2 rounded-md text-base font-medium">Våra Verksamheter</a>
+                <a href="contact.html" class="text-neutral-dark hover:bg-neutral-light-gray hover:text-primary-blue block px-3 py-2 rounded-md text-base font-medium">Kontakt</a>
+            </div>
+            <div class="pt-4 pb-3 border-t border-neutral-light-gray">
+                <div class="flex items-center px-5">
+                    <a href="contact.html" class="w-full text-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-primary-blue hover:bg-opacity-90">
+                        Kontakta Oss
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-neutral-dark text-white relative">
+        <div class="absolute inset-0">
+            <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Inspiring background image">
+            <div class="absolute inset-0 bg-neutral-dark opacity-60"></div>
+        </div>
+        <div class="container-custom mx-auto relative z-10 min-h-[60vh] md:min-h-[70vh] flex flex-col justify-center items-center text-center py-16 md:py-24">
+            <h1 class="text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl !text-white">
+                Det lilla bolaget med de stora möjligheterna.
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg sm:text-xl md:text-2xl !text-neutral-light-gray leading-relaxed">
+                Vi hjälper individer och företag att växa genom skräddarsydda lösningar inom konsultation, fastigheter, transport och uthyrning.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="services.html" class="inline-block px-8 py-3 border border-transparent text-base font-semibold rounded-lg text-white bg-primary-blue hover:bg-opacity-90 transform transition-transform duration-200 hover:scale-105">
+                    Våra Tjänster
+                </a>
+                <a href="about.html" class="inline-block px-8 py-3 border border-white text-base font-semibold rounded-lg text-white bg-transparent hover:bg-white hover:text-neutral-dark transform transition-transform duration-200 hover:scale-105">
+                    Om Oss
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Services Overview Section -->
+        <section class="py-16 md:py-24 bg-neutral-light-gray">
+            <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-neutral-dark sm:text-4xl md:text-5xl">Upptäck Våra Lösningar</h2>
+                    <p class="mt-4 text-lg text-neutral-mid-gray max-w-2xl mx-auto">
+                        JL Marknad erbjuder ett brett spektrum av tjänster för att möta dina unika behov och hjälpa dig nå dina mål.
+                    </p>
+                </div>
+                <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                    <!-- Service Card 1 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="p-6 md:p-8">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary-blue text-white mx-auto mb-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            </div>
+                            <h4 class="text-xl font-semibold text-neutral-dark text-center">Affärsutveckling</h4>
+                            <p class="mt-2 text-neutral-mid-gray text-center text-sm leading-relaxed">Strategisk rådgivning och coaching för att lyfta ditt företag till nästa nivå.</p>
+                            <div class="mt-6 text-center">
+                                <a href="service-business-consulting.html" class="text-sm font-medium text-primary-blue hover:underline">Läs Mer &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="p-6 md:p-8">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary-blue text-white mx-auto mb-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                            </div>
+                            <h4 class="text-xl font-semibold text-neutral-dark text-center">Fastigheter</h4>
+                            <p class="mt-2 text-neutral-mid-gray text-center text-sm leading-relaxed">Förvaltning och uthyrning av bostäder och lokaler med fokus på kvalitet och service.</p>
+                            <div class="mt-6 text-center">
+                                <a href="service-property-rentals.html" class="text-sm font-medium text-primary-blue hover:underline">Läs Mer &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="p-6 md:p-8">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary-blue text-white mx-auto mb-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2-2h8zm10-1V6a1 1 0 00-1-1h-4a1 1 0 00-1 1v10l2-2h3zM3 11h18" /></svg>
+                            </div>
+                            <h4 class="text-xl font-semibold text-neutral-dark text-center">Transport</h4>
+                            <p class="mt-2 text-neutral-mid-gray text-center text-sm leading-relaxed">Pålitliga och effektiva transportlösningar för både privatpersoner och företag.</p>
+                            <div class="mt-6 text-center">
+                                <a href="service-transport-solutions.html" class="text-sm font-medium text-primary-blue hover:underline">Läs Mer &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Card 4 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="p-6 md:p-8">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary-blue text-white mx-auto mb-6">
+                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            </div>
+                            <h4 class="text-xl font-semibold text-neutral-dark text-center">Uthyrning</h4>
+                            <p class="mt-2 text-neutral-mid-gray text-center text-sm leading-relaxed">Flexibel uthyrning av utrustning, inklusive släpvagnar, för dina projekt.</p>
+                            <div class="mt-6 text-center">
+                                <a href="service-equipment-rentals.html" class="text-sm font-medium text-primary-blue hover:underline">Läs Mer &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us? / Values Section -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-neutral-dark sm:text-4xl">Partnern För Din Tillväxt</h2>
+                        <p class="mt-4 text-lg text-neutral-mid-gray">
+                            Med mångårig erfarenhet och ett starkt kundfokus är JL Marknad din pålitliga partner. Vi kombinerar bred kompetens med personligt engagemang för att leverera resultat som gör skillnad.
+                        </p>
+                        <dl class="mt-10 space-y-8">
+                            <div>
+                                <dt class="flex items-center">
+                                    <div class="flex items-center justify-center h-10 w-10 rounded-md bg-primary-blue text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                                    </div>
+                                    <p class="ml-4 text-lg leading-6 font-medium text-neutral-dark">Erfarenhet</p>
+                                </dt>
+                                <dd class="mt-2 ml-14 text-base text-neutral-mid-gray">
+                                    Gedigen branschkunskap och beprövade metoder säkerställer hög kvalitet i allt vi gör.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="flex items-center">
+                                    <div class="flex items-center justify-center h-10 w-10 rounded-md bg-primary-blue text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    </div>
+                                    <p class="ml-4 text-lg leading-6 font-medium text-neutral-dark">Flexibilitet</p>
+                                </dt>
+                                <dd class="mt-2 ml-14 text-base text-neutral-mid-gray">
+                                    Vi anpassar våra lösningar efter dina specifika behov och förutsättningar.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="flex items-center">
+                                    <div class="flex items-center justify-center h-10 w-10 rounded-md bg-primary-blue text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    </div>
+                                    <p class="ml-4 text-lg leading-6 font-medium text-neutral-dark">Resultatfokus</p>
+                                </dt>
+                                <dd class="mt-2 ml-14 text-base text-neutral-mid-gray">
+                                    Vårt mål är att skapa mätbara resultat och långsiktigt värde för våra kunder.
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div class="mt-10 lg:mt-0">
+                        <img class="rounded-lg shadow-xl object-cover h-full w-full max-h-[500px]" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Team collaboration">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Ventures / Partners Teaser Section -->
+        <section class="py-16 md:py-24 bg-neutral-light-gray">
+            <div class="container-custom mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-neutral-dark sm:text-4xl">Våra Verksamheter & Partners</h2>
+                    <p class="mt-4 text-lg text-neutral-mid-gray max-w-2xl mx-auto">
+                        Vi är stolta över våra engagemang och samarbeten som bidrar till tillväxt och utveckling.
+                    </p>
+                </div>
+                <div class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 items-center">
+                    <!-- Placeholder Logos -->
+                    <div class="flex justify-center p-4"><img src="https://via.placeholder.com/150x60.png?text=Skidshopen" alt="Skidshopen Logo" class="h-12"></div>
+                    <div class="flex justify-center p-4"><img src="https://via.placeholder.com/150x60.png?text=Hovfjället" alt="Hovfjället Logo" class="h-12"></div>
+                    <div class="flex justify-center p-4"><img src="https://via.placeholder.com/150x60.png?text=Larssonbuss" alt="Larssonbuss Logo" class="h-12"></div>
+                    <div class="flex justify-center p-4"><img src="https://via.placeholder.com/150x60.png?text=Löparbussen" alt="Löparbussen Logo" class="h-12"></div>
+                    <div class="flex justify-center p-4"><img src="https://via.placeholder.com/150x60.png?text=Partner+5" alt="Partner 5 Logo" class="h-12"></div>
+                    <div class="flex justify-center p-4"><img src="https://via.placeholder.com/150x60.png?text=Partner+6" alt="Partner 6 Logo" class="h-12"></div>
+                </div>
+                 <div class="mt-8 text-center">
+                    <a href="ventures.html" class="text-base font-medium text-primary-blue hover:underline">Utforska våra verksamheter &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="bg-primary-blue">
+            <div class="container-custom mx-auto py-16 px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-white sm:text-4xl">
+                    Redo att ta nästa steg?
+                </h2>
+                <p class="mt-4 text-lg leading-6 text-neutral-light-gray max-w-2xl mx-auto">
+                    Kontakta oss idag för att diskutera hur vi kan hjälpa dig att förverkliga dina visioner och nå nya framgångar.
+                </p>
+                <a href="contact.html" class="mt-8 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-semibold text-neutral-dark bg-accent-yellow hover:bg-opacity-90 sm:w-auto transform transition-transform duration-200 hover:scale-105">
+                    Kontakta Oss
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-dark text-neutral-light-gray">
+        <div class="container-custom mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+                <div class="space-y-8 xl:col-span-1">
+                    <!-- Placeholder for JL Marknad Logo (monochrome white) -->
+                    <a href="index.html" class="text-2xl font-bold text-white">JL Marknad</a>
+                    <!-- <img class="h-10" src="path/to/logo-white.svg" alt="JL Marknad"> -->
+                    <p class="text-sm text-neutral-mid-gray">
+                        Det lilla bolaget med de stora möjligheterna.
+                    </p>
+                    <div class="flex space-x-6">
+                        <!-- Optional Social Media Icons -->
+                        <a href="#" class="text-neutral-mid-gray hover:text-white">
+                            <span class="sr-only">LinkedIn</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" /></svg>
+                        </a>
+                        <a href="#" class="text-neutral-mid-gray hover:text-white">
+                            <span class="sr-only">Facebook</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Snabba Länkar</h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li><a href="index.html" class="text-base text-neutral-mid-gray hover:text-white">Hem</a></li>
+                                <li><a href="about.html" class="text-base text-neutral-mid-gray hover:text-white">Om Oss</a></li>
+                                <li><a href="services.html" class="text-base text-neutral-mid-gray hover:text-white">Tjänster</a></li>
+                                <li><a href="ventures.html" class="text-base text-neutral-mid-gray hover:text-white">Våra Verksamheter</a></li>
+                                <li><a href="contact.html" class="text-base text-neutral-mid-gray hover:text-white">Kontakt</a></li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Tjänster</h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li><a href="service-business-consulting.html" class="text-base text-neutral-mid-gray hover:text-white">Affärsutveckling</a></li>
+                                <li><a href="service-property-rentals.html" class="text-base text-neutral-mid-gray hover:text-white">Fastigheter</a></li>
+                                <li><a href="service-transport-solutions.html" class="text-base text-neutral-mid-gray hover:text-white">Transport</a></li>
+                                <li><a href="service-equipment-rentals.html" class="text-base text-neutral-mid-gray hover:text-white">Uthyrning</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="md:grid md:grid-cols-1 md:gap-8"> <!-- Changed to 1 col for contact -->
+                        <div>
+                            <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Kontakt</h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li class="text-base text-neutral-mid-gray">Exempelgatan 123, 702 00 Örebro</li>
+                                <li class="text-base text-neutral-mid-gray">Telefon: 019-123 45 67</li>
+                                <li class="text-base text-neutral-mid-gray">E-post: info@jlmarknad.se</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-neutral-mid-gray pt-8">
+                <p class="text-base text-neutral-mid-gray text-center">&copy; <span id="currentYear"></span> JL Marknad AB. Alla rättigheter förbehållna.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcons = mobileMenuButton.querySelectorAll('svg');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuButton.setAttribute('aria-expanded', !expanded);
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuIcons[0].classList.toggle('hidden'); // Burger icon
+            mobileMenuIcons[1].classList.toggle('hidden'); // Close icon
+        });
+
+        // Mobile services dropdown toggle
+        const mobileServicesButton = document.getElementById('mobile-services-button');
+        const mobileServicesDropdown = document.getElementById('mobile-services-dropdown');
+        const mobileServicesIcon = mobileServicesButton.querySelector('svg');
+
+        mobileServicesButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent closing the main mobile menu if open
+            mobileServicesDropdown.classList.toggle('hidden');
+            mobileServicesIcon.classList.toggle('rotate-180');
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
